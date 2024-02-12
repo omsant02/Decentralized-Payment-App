@@ -16,7 +16,29 @@ const Login = () => {
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
-      App.setLogin(true);
+      App.setAddress(accounts[0]);
+
+      const chainId = await ethereum.request({ method: "eth_chainId" });
+      // console.log(chainId);
+
+      if (chainId == "0x3") {
+        App.setChain("Ropsten");
+        App.setLogin(true);
+      }
+      // else if (chainId == "0xaa36a7") {
+      //   App.setChain("Sepholia");
+      //   App.setLogin(true);
+      // }
+      else if (chainId == "0x4") {
+        App.setChain("Rinkeby");
+        App.setLogin(true);
+      } else if (chainId == "0x13881") {
+        App.setChain("Polygon");
+        App.setLogin(true);
+      } else {
+        setError("Can only access with Ropsten, Rinkeby, Polygon Mumbai");
+        App.setLogin(false);
+      }
     } catch (error) {
       setError(`"${error.message}"`);
     }

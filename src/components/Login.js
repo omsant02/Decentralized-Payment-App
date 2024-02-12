@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
+import { AppState } from "../App";
 
 const Login = () => {
+  const App = useContext(AppState);
+
   const { ethereum } = window;
   const [error, setError] = useState("");
 
@@ -13,6 +16,7 @@ const Login = () => {
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
+      App.setLogin(true);
     } catch (error) {
       setError(`"${error.message}"`);
     }

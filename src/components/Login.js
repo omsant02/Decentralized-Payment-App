@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 
 const Login = () => {
   const { ethereum } = window;
+  const [error, setError] = useState("");
 
-  const LoginWallet = async () => {};
+  const LoginWallet = async () => {
+    try {
+      await ethereum.request({
+        method: "wallet_requestPermissions",
+        params: [{ eth_accounts: {} }],
+      });
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+    } catch (error) {
+      setError(`"${error.message}"`);
+    }
+  };
   return (
     <div className="min-w-full h-4/5 flex justify-center flex-col items-center">
       <img className="h-20" src="paypal.png" />
@@ -34,6 +47,7 @@ const Login = () => {
             </p>
           </div>
         )}
+        <p className="text-red-600 text-lg mt-2">{error}</p>
       </div>
     </div>
   );

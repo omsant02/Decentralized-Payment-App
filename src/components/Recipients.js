@@ -12,6 +12,18 @@ const Recipients = () => {
   const [data, setData] = useState([]);
   const [num, setNum] = useState(0);
 
+  useEffect(() => {
+    async function getData() {
+      const recipients = await App.paypalContract.filters.recipeints(
+        App.address
+      );
+      const recipentsData = await App.paypalContract.queryFilter(recipients);
+      setData(recipentsData);
+    }
+
+    getData();
+  }, [num]);
+
   const addRecipient = async () => {
     try {
       const tx = await App.paypalContract.addRecipient(
@@ -28,6 +40,11 @@ const Recipients = () => {
 
     let nextnum = num + 1;
     setNum(nextnum);
+  };
+
+  const setRecipient = (address, name) => {
+    App.setRecipientAddress(address);
+    setMessage("Selected the " + name + "'s address");
   };
 
   return (
@@ -55,6 +72,30 @@ const Recipients = () => {
 
       <p className="text-red-600 text-lg mt-2 px-3">{error}</p>
       <p className="text-green-600 text-lg mt-2 px-1">{message}</p>
+
+      <div className="flex flex-col items-center justify-center mt-4 w-full">
+        {data.map((e) => {
+          return (
+            <div
+              onClick={() =>
+                setRecipient(e.args.recipient, e.args.recipientName)
+              }
+              className={`bg-black cursor-pointer rounded-lg bg-opacity-60 border-2 border-blue-900 border-opacity-80 w-3/4 mt-2`}
+            >
+              <div className="flex w-full items-center justify-center rounded-t-lg">
+                <div className="w-full py-2 px-2">
+                  <p className="text-xl font-mono">
+                    Name: {e.args.recipientName}
+                  </p>
+                  <p className="text-xs font-mono">
+                    address: {e.args.recipient}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

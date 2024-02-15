@@ -22,16 +22,16 @@ const Login = () => {
 
       App.getBal();
 
-      if (chainId == "0x3") {
-        App.setChain("Ropsten");
-        App.setLogin(true);
-        App.setCurrency("RopstenEther");
-        App.setSymbol("rEth");
-        App.setPaypalContractAddress(
-          "0xa02b2CCE714f874AD7593f50012c5d3756BF2773"
-        );
-        App.setExplorer("https://ropsten.etherscan.io");
-      } else if (chainId == "0xaa36a7") {
+      // if (chainId == "0x3") {
+      //   App.setChain("Ropsten");
+      //   App.setLogin(true);
+      //   App.setCurrency("RopstenEther");
+      //   App.setSymbol("rEth");
+      //   App.setPaypalContractAddress(
+      //     "0xa02b2CCE714f874AD7593f50012c5d3756BF2773"
+      //   );
+      //   App.setExplorer("https://ropsten.etherscan.io");
+      if (chainId == "0xaa36a7") {
         App.setChain("Sepholia");
         App.setLogin(true);
         App.setCurrency("SepoliaEther");
@@ -40,19 +40,19 @@ const Login = () => {
           "0x04694435FffB6A91F4e6424feA06d34D3efF21eF"
         );
         App.setExplorer("https://sepolia.etherscan.io");
-      } else if (chainId == "0x4") {
-        App.setChain("Rinkeby");
-        App.setLogin(true);
-        App.setCurrency("RopstenEther");
-        App.setSymbol("rEth");
-        App.setPaypalContractAddress(
-          "0xa02b2CCE714f874AD7593f50012c5d3756BF2773"
-        );
-        App.setExplorer("https://ropsten.etherscan.io");
+        // } else if (chainId == "0x4") {
+        //   App.setChain("Rinkeby");
+        //   App.setLogin(true);
+        //   App.setCurrency("RopstenEther");
+        //   App.setSymbol("rEth");
+        //   App.setPaypalContractAddress(
+        //     "0xa02b2CCE714f874AD7593f50012c5d3756BF2773"
+        //   );
+        //   App.setExplorer("https://ropsten.etherscan.io");
       } else if (chainId == "0x13881") {
         App.setChain("Polygon");
         App.setLogin(true);
-        App.setCurrency("Matic");
+        App.setCurrency("PolygonMatic");
         App.setSymbol("Matic");
         App.setPaypalContractAddress(
           "0x86334ef4CfaF674c501E3768E68A6AaE56f5a6b4"

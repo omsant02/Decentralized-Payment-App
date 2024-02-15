@@ -80,15 +80,18 @@ function App() {
 
   const removeToken = async () => {
     try {
-      if (chain == "Ropsten") {
-        setCurrency("RopstenEther");
-        setSymbol("rEth");
-      } else if (chain == "Rinkeby") {
-        setCurrency("RinkebyEther");
-        setSymbol("rEth");
-      } else if (chain == "polygon") {
-        setCurrency("Matic");
+      // if (chain == "Ropsten") {
+      //   setCurrency("RopstenEther");
+      //   setSymbol("rEth");
+      // } else if (chain == "Rinkeby") {
+      //   setCurrency("RinkebyEther");
+      //   setSymbol("rEth");
+      if (chain == "polygon") {
+        setCurrency("PolygonMatic");
         setSymbol("Matic");
+      } else if (chain == "sepolia") {
+        setCurrency("SepoliaEther");
+        setSymbol("sEth");
       }
 
       setErcTokenAddress("");
@@ -159,28 +162,28 @@ function App() {
 
   useEffect(() => {
     ethereum.on("chainChanged", async (chainId) => {
-      if (chainId == "0x3") {
-        setChain("Ropsten");
-        setCurrency("RopstenEther");
-        setSymbol("rEth");
-        setPaypalContractAddress("0x04694435FffB6A91F4e6424feA06d34D3efF21eF");
-        setExplorer("https://sepolia.etherscan.io");
-      } else if (chainId == "0x4") {
-        setChain("Rinkeby");
-        setCurrency("RopstenEther");
-        setSymbol("rEth");
-        setPaypalContractAddress("0x04694435FffB6A91F4e6424feA06d34D3efF21eF");
-        setExplorer("https://sepolia.etherscan.io");
-      } else if (chainId == "0x13881") {
+      // if (chainId == "0x3") {
+      //   setChain("Ropsten");
+      //   setCurrency("RopstenEther");
+      //   setSymbol("rEth");
+      //   setPaypalContractAddress("0x04694435FffB6A91F4e6424feA06d34D3efF21eF");
+      //   setExplorer("https://sepolia.etherscan.io");
+      // } else if (chainId == "0x4") {
+      //   setChain("Rinkeby");
+      //   setCurrency("RopstenEther");
+      //   setSymbol("rEth");
+      //   setPaypalContractAddress("0x04694435FffB6A91F4e6424feA06d34D3efF21eF");
+      //   setExplorer("https://sepolia.etherscan.io");
+      if (chainId == "0x13881") {
         setChain("Polygon");
-        setCurrency("RopstenEther");
-        setSymbol("rEth");
+        setCurrency("PolygonMatic");
+        setSymbol("Matic");
         setPaypalContractAddress("0x86334ef4CfaF674c501E3768E68A6AaE56f5a6b4");
         setExplorer("https://mumbai.polygonscan.com");
       } else if (chainId == "0xaa36a7") {
         setChain("Sepolia");
-        setCurrency("RopstenEther");
-        setSymbol("rEth");
+        setCurrency("SepoliaEther");
+        setSymbol("sEth");
         setPaypalContractAddress("0x04694435FffB6A91F4e6424feA06d34D3efF21eF");
         setExplorer("https://sepolia.etherscan.io");
       } else {

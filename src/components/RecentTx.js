@@ -18,9 +18,10 @@ const RecentTx = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-3 text-white">
-      {data.map((e) => {
+      {data.map((e, index) => {
         return (
           <div
+            key={index}
             className={`bg-black rounded-lg bg-opacity-60 border-2 border-blue-900 border-opacity-80 w-4/5 mt-2`}
           >
             <div className="flex w-full items-center justify-center rounded-t-lg">

@@ -74,9 +74,10 @@ const Recipients = () => {
       <p className="text-green-600 text-lg mt-2 px-1">{message}</p>
 
       <div className="flex flex-col items-center justify-center mt-4 w-full">
-        {data.map((e) => {
+        {data.map((e, index) => {
           return (
             <div
+              key={index}
               onClick={() =>
                 setRecipient(e.args.recipient, e.args.recipientName)
               }

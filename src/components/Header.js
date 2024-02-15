@@ -6,13 +6,13 @@ const Header = () => {
   const App = useContext(AppState);
   const [showChains, setShowChains] = useState(false);
 
-  const changeToRosten = async () => {
-    await ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x3" }],
-    });
-    setShowChains(false);
-  };
+  // const changeToRosten = async () => {
+  //   await ethereum.request({
+  //     method: "wallet_switchEthereumChain",
+  //     params: [{ chainId: "0x3" }],
+  //   });
+  //   setShowChains(false);
+  // };
 
   const changeToPolygon = async () => {
     await ethereum.request({
@@ -30,13 +30,13 @@ const Header = () => {
     setShowChains(false);
   };
 
-  const changeToRinkeby = async () => {
-    await ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x4" }],
-    });
-    setShowChains(false);
-  };
+  // const changeToRinkeby = async () => {
+  //   await ethereum.request({
+  //     method: "wallet_switchEthereumChain",
+  //     params: [{ chainId: "0x4" }],
+  //   });
+  //   setShowChains(false);
+  // };
 
   return (
     <div className="w-full h-1/4 pt-4 flex justify-between items-start">
@@ -74,14 +74,14 @@ const Header = () => {
 
         {/* All Chains */}
         <div className={`${showChains ? "" : "hidden"} absolute right-0 z-50`}>
-          {/* Ropsten */}
+          {/* Ropsten
           <div
             onClick={changeToRosten}
             className="text-xl py-2 px-4 mr-2 font-sans border-opacity-60 border-2 border-blue-900 font-medium cursor-pointer hover:bg-gray-900 bg-black text-white rounded-lg flex justify-between items-center"
           >
             <img className="h-6 mr-2" src="ethereum-eth.svg" />
             Ropsten
-          </div>
+          </div> */}
 
           {/* Polygon */}
           <div
@@ -101,14 +101,14 @@ const Header = () => {
             Sepolia
           </div>
 
-          {/* Rinkeby */}
+          {/* Rinkeby
           <div
             onClick={changeToRinkeby}
             className="text-xl py-2 px-4 mr-2 font-sans border-opacity-60 border-2 border-blue-900 font-medium cursor-pointer hover:bg-gray-900 bg-black text-white rounded-lg flex justify-between items-center"
           >
             <img className="h-6 mr-2" src="ethereum-eth.svg" />
             Rinkeby
-          </div>
+          </div> */}
 
           {/* Close The chains */}
           <div
